@@ -1,31 +1,45 @@
 import React,{ Component } from 'react';
 
+var components={};
+
 class OfficeLeaf extends Component {
   constructor(props) {
     super(props);
+    this.store=props.store;
     this.subject=props.subject || "Leaf";
     this.verb=props.verb || "shows";
     this.sentence=props.sentence || "OfficeLeaf is the base class for everything that can appear on any screen";
     this.size=props.size || "BUTTON";
     this.charactericon=this.subject[0]+this.verb[0];
+    if (props.path)this.path=props.path.split(",");else this.path=["OfficeLeaf","ObRoot"];
     this.leafHTML=<h3>Couldn't render. Some error in {this.subject} {this.verb}</h3>;
+    this.handleClick = this.handleClick.bind(this);
   }
   renderIcon(){
-      this.leafHTML= <button type="button" on-click="_onclick">{this.charactericon}</button>;
+      this.leafHTML= <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
   }
   renderButton(){
-      this.leafHTML=<button type="button" on-click="_onclick">{this.subject} {this.verb}</button>;
+      this.leafHTML=<button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
   }
   renderListItem(){
-      this.leafHTML= <div class="LIST_ITEM"><button type="button" on-click="_onclick">{this.subject} {this.verb}</button></div>;
+      this.leafHTML= <div class="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
   }
   renderMobile(){
+      var CurrentLeaf ;
+      var pathHTML= this.path.map((officeLeaf)=>{
+            CurrentLeaf = components[officeLeaf];
+            var pathHTML = <CurrentLeaf size="BUTTON" />;
+            return pathHTML;
+          }
+      )
+      console.log(pathHTML);
+        
       this.leafHTML=(
-        <div class="MOBILE">
-          <div id="path">hallo </div>
+        <div className="MOBILE">
+          <div id="path">{pathHTML}</div>
           <h1>{this.subject} {this.verb}</h1>
           <p>{this.sentence}</p>
-          <button type="button" on-click="_onclick">{this.subject} {this.verb}</button>
+          <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>
           <ul>
             <li>path:StringArray with oo-leaf-names</li>
             <li>size = ICON || BUTTON || LIST_ITEM || MOBILE || TABLET</li>
@@ -36,6 +50,13 @@ class OfficeLeaf extends Component {
           </ul>
         </div>
       )
+  }
+  handleClick() {
+      console.log("Knopf geklickt");
+      this.store.dispatch({
+          type: 'change_leaf',
+          newLeaf: 'ObRoot'
+      });
   }
   render(){
     switch (this.size) {
@@ -58,4 +79,7 @@ class OfficeLeaf extends Component {
   }
 }
 
-export default OfficeLeaf;
+components.OfficeLeaf =  OfficeLeaf;
+
+
+export { OfficeLeaf,components};    
