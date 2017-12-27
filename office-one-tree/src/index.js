@@ -13,7 +13,7 @@ const initial = {
 			loggedIn: false,
 			waitingForResponse: false,
 			user: '',
-			leaf:'OfficeLeaf'
+			leaf:'ObRoot'
 		},
 		BM: {
 			oofolder:{
@@ -59,17 +59,17 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__){
 		);
 } else reduxMiddleware = 	applyMiddleware(ReduxThunk);
 		
-let store = createStore(
+window.store = createStore(
 		reducer,
 		reduxMiddleware
 		);
 		
-ReactDOM.render(<App store={store}/>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 registerServiceWorker();
 
-store.subscribe(() =>{
-  console.log("Dom wird neugerendert:"+store.getState())
- ReactDOM.render(<App store={store}/>, document.getElementById('root'));
+window.store.subscribe(() =>{
+  console.log("Dom wird neugerendert");
+  ReactDOM.render(<App/>, document.getElementById('root'));
 }
 );

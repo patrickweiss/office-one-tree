@@ -5,38 +5,39 @@ var components={};
 class OfficeLeaf extends Component {
   constructor(props) {
     super(props);
-    this.store=props.store;
     this.subject=props.subject || "Leaf";
     this.verb=props.verb || "shows";
     this.sentence=props.sentence || "OfficeLeaf is the base class for everything that can appear on any screen";
     this.size=props.size || "BUTTON";
     this.charactericon=this.subject[0]+this.verb[0];
     if (props.path)this.path=props.path.split(",");else this.path=["OfficeLeaf","ObRoot"];
-    this.leafHTML=<h3>Couldn't render. Some error in {this.subject} {this.verb}</h3>;
     this.handleClick = this.handleClick.bind(this);
   }
   renderIcon(){
-      this.leafHTML= <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
+      return <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
   }
   renderButton(){
-      this.leafHTML=<button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
+      return <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
   }
   renderListItem(){
-      this.leafHTML= <div class="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
+      return <div class="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
   }
+  renderPath() {
+    var CurrentLeaf;
+    var pathHTML = this.path.map((officeLeaf) => {
+      CurrentLeaf = components[officeLeaf];
+      var pathHTML = <CurrentLeaf size="BUTTON" />;
+      return pathHTML;
+    });
+
+    return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
+  }
+  
   renderMobile(){
-      var CurrentLeaf ;
-      var pathHTML= this.path.map((officeLeaf)=>{
-            CurrentLeaf = components[officeLeaf];
-            var pathHTML = <CurrentLeaf size="BUTTON" />;
-            return pathHTML;
-          }
-      )
-      console.log(pathHTML);
-        
-      this.leafHTML=(
+  
+      return(
+
         <div className="MOBILE">
-          <div id="path">{pathHTML}</div>
           <h1>{this.subject} {this.verb}</h1>
           <p>{this.sentence}</p>
           <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>
@@ -53,29 +54,26 @@ class OfficeLeaf extends Component {
   }
   handleClick() {
       console.log("Knopf geklickt");
-      this.store.dispatch({
+      window.store.dispatch({
           type: 'change_leaf',
-          newLeaf: 'ObRoot'
+          newLeaf: this.constructor.name
       });
   }
   render(){
+    this.leafHTML="";
     switch (this.size) {
         case 'ICON':
-            this.renderIcon();
-            break;
+            return this.renderIcon();
         case 'BUTTON':
-            this.renderButton();
-            break;
+            return this.renderButton();
         case 'LIST_ITEM':
-            this.renderListItem();
-            break;
+            return this.renderListItem();
         case 'MOBILE':
-            this.renderMobile();
-            break;
+            return <div>{this.renderPath()}{this.renderMobile()}</div>;
         default:
-            
+            return <h1>Component has no valis size</h1>
     }
-    return this.leafHTML;
+    
   }
 }
 
