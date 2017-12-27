@@ -13,7 +13,7 @@ class BelegeAuswerten extends OfficeLeaf {
   }
     renderListItem(){
       return (
-      <div class="LIST_ITEM">
+      <div className="LIST_ITEM">
       Belege auswerten
         <UStVA size="LIST_ITEM"/>
         <EUER size="LIST_ITEM"/>

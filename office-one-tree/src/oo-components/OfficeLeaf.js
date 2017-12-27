@@ -20,7 +20,7 @@ class OfficeLeaf extends Component {
       return <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
   }
   renderListItem(){
-      return <div class="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
+      return <div className="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
   }
   renderPath() {
     var CurrentLeaf;

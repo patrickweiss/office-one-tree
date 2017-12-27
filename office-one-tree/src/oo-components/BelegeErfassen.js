@@ -12,7 +12,7 @@ class BelegeErfassen extends OfficeLeaf {
   }
   renderListItem(){
       return (
-      <div class="LIST_ITEM">
+      <div className="LIST_ITEM">
       Belege erfassen
         <AusgabenErfassen size="LIST_ITEM"/>
         <EinnahmenErfassen size="LIST_ITEM"/>

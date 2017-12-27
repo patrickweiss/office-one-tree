@@ -3,8 +3,6 @@ import {OfficeLeaf,components} from './OfficeLeaf.js';
 import BelegeAuswerten from'./BelegeAuswerten.js';
 import BelegeErfassen from'./BelegeErfassen.js';
 
-
-
 class ObRoot extends OfficeLeaf {
   constructor(props) {
     super(props);
@@ -21,8 +19,5 @@ class ObRoot extends OfficeLeaf {
           )
   }
 }
-console.log("OBRoot declaration:");
-console.log(components);
 components.ObRoot=ObRoot;
-console.log(components);
 export default ObRoot;
