@@ -7,7 +7,7 @@ class AusgabenListen extends OfficeLeaf {
     super(props);
     this.subject = "Ausgaben";
     this.verb = "listen";
-    this.path = ["ObRoot", "AusgabenErfassen", "AusgabenListen"];
+    this.path = ["ObRoot", "AusgabenBelegeErstellenErfassenBuchen", "AusgabenListen"];
   }
   renderListItem() {
     return (

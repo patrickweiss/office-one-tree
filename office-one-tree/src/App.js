@@ -3,7 +3,7 @@ import './App.css';
 import {components} from './oo-components/OfficeLeaf.js';
 import './oo-components/ObRoot.js';
 import './oo-components/BelegeAuswerten.js';
-import './oo-components/BelegeErfassen.js';
+import './oo-components/BelegeErstellenErfassenBuchen.js';
 
 
 

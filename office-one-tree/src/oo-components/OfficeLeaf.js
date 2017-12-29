@@ -5,13 +5,16 @@ var components={};
 class OfficeLeaf extends Component {
   constructor(props) {
     super(props);
+    this.size=props.size || "BUTTON";
+    this.handleClick = this.handleClick.bind(this);
+    this.initialize(props);
+  }
+  initialize(props){
     this.subject=props.subject || "Leaf";
     this.verb=props.verb || "shows";
     this.sentence=props.sentence || "OfficeLeaf is the base class for everything that can appear on any screen";
-    this.size=props.size || "BUTTON";
     this.charactericon=this.subject[0]+this.verb[0];
     if (props.path)this.path=props.path.split(",");else this.path=["OfficeLeaf","ObRoot"];
-    this.handleClick = this.handleClick.bind(this);
   }
   renderIcon(){
       return <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
@@ -24,12 +27,14 @@ class OfficeLeaf extends Component {
   }
   renderPath() {
     var CurrentLeaf;
-    var pathHTML = this.path.map((officeLeaf) => {
-      CurrentLeaf = components[officeLeaf];
-      var pathHTML = <CurrentLeaf size="BUTTON" />;
-      return pathHTML;
-    });
-
+    var pathHTML = [];
+    //Buchungsperiode einfügen, wenn diese ausgewählt wurde
+    if (window.store.getState().UI.buchungsperiode) this.path.splice(1,0,"BuchungsperiodeWaehlen");
+    for (var i = 0; i < this.path.length; i++) {
+      CurrentLeaf = components[this.path[i]];
+      if (i === this.path.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" />);
+        else pathHTML.push(<CurrentLeaf size="ICON" />);
+    }
     return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
   }
   
@@ -52,8 +57,8 @@ class OfficeLeaf extends Component {
         </div>
       )
   }
-  handleClick() {
-      console.log("Knopf geklickt");
+  handleClick(e) {
+      console.log(this.constructor.name+" geklickt");
       window.store.dispatch({
           type: 'change_leaf',
           newLeaf: this.constructor.name

@@ -1,23 +1,36 @@
 import React from 'react';
-import {OfficeLeaf,components} from './OfficeLeaf.js';
-import BelegeAuswerten from'./BelegeAuswerten.js';
-import BelegeErfassen from'./BelegeErfassen.js';
+import { OfficeLeaf, components } from './OfficeLeaf.js';
+import BelegeAuswerten from './BelegeAuswerten.js';
+import BelegeErstellenErfassenBuchen from './BelegeErstellenErfassenBuchen.js';
+import BuchungsperiodeWaehlen from './BuchungsperiodeWaehlen.js';
 
 class ObRoot extends OfficeLeaf {
-  constructor(props) {
-    super(props);
-    this.subject= "office";
-    this.verb="one";
-    this.path=["ObRoot"];
+  initialize(props) {
+    var newProps = {};
+    newProps.subject = "office one";
+    newProps.verb = "2017";
+    newProps.path = "ObRoot";
+    super.initialize(newProps);
+    this.charactericon = "oo17";
   }
-  renderMobile(){
+  renderMobile() {
+
+    if (window.store.getState().UI.buchungsperiode)
       return (
-          <div>
-            <BelegeErfassen size="LIST_ITEM"/>
+        <div>
+             <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
             <BelegeAuswerten size="LIST_ITEM"/>
           </div>
-          )
+      );
+    else
+      return (
+        <div>
+            <BuchungsperiodeWaehlen size="LIST_ITEM"/>
+            <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
+            <BelegeAuswerten size="LIST_ITEM"/>
+          </div>
+      );
   }
 }
-components.ObRoot=ObRoot;
+components.ObRoot = ObRoot;
 export default ObRoot;

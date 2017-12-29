@@ -39,7 +39,11 @@ const reducer = (state = initial, action) => {
 		case 'change_leaf':
 			newState.UI.leaf=action.newLeaf;
 			return newState;
-		case 'Benutzer_einloggen':
+		case 'change_Buchungsperiode':
+			newState.UI.buchungsperiode=action.newBuchungsperiode;
+			newState.UI.leaf="ObRoot";
+			return newState;
+			case 'Benutzer_einloggen':
 			newState.UI.waitingForResponse=true;
 			return newState;
 		case 'Server_antwortet':
