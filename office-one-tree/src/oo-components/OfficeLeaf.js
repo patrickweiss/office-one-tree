@@ -29,7 +29,7 @@ class OfficeLeaf extends Component {
     var CurrentLeaf;
     var pathHTML = [];
     //Buchungsperiode einfügen, wenn diese ausgewählt wurde
-    if (window.store.getState().UI.buchungsperiode) this.path.splice(1,0,"BuchungsperiodeWaehlen");
+    if (window.store.getState().UI.buchungsperiode)this.path.splice(1,0,"BuchungsperiodeWaehlen");
     for (var i = 0; i < this.path.length; i++) {
       CurrentLeaf = components[this.path[i]];
       if (i === this.path.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" />);

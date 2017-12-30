@@ -6,8 +6,8 @@ import {OfficeLeaf,components} from './OfficeLeaf.js';
 class EinnahmenBelegeErstellenErfassenBuchen extends OfficeLeaf {
   constructor(props) {
     super(props);
-    this.subject= "Einnahmenbelege";
-    this.verb="erstellen, erfassen, buchen";
+    this.subject= "Einnahmen";
+    this.verb=" ";
     this.path=["ObRoot","EinnahmenBelegeErstellenErfassenBuchen"];
   }
 }

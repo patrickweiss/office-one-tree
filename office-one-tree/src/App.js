@@ -4,6 +4,7 @@ import {components} from './oo-components/OfficeLeaf.js';
 import './oo-components/ObRoot.js';
 import './oo-components/BelegeAuswerten.js';
 import './oo-components/BelegeErstellenErfassenBuchen.js';
+import './oo-components/OfficeOne2018.js';
 
 
 

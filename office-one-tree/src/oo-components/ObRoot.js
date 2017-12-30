@@ -8,17 +8,25 @@ class ObRoot extends OfficeLeaf {
   initialize(props) {
     var newProps = {};
     newProps.subject = "office one";
-    newProps.verb = "2017";
+    newProps.verb = "2018";
     newProps.path = "ObRoot";
     super.initialize(newProps);
-    this.charactericon = "oo17";
+    this.charactericon = "oo18";
+  }
+  handleClick(e) {
+    if (window.store.getState().UI.leaf==="ObRoot"){
+      window.store.dispatch({
+          type: 'change_leaf',
+          newLeaf: 'OfficeOne2018'
+      });
+    }else super.handleClick();
   }
   renderMobile() {
 
     if (window.store.getState().UI.buchungsperiode)
       return (
         <div>
-             <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
+            <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
             <BelegeAuswerten size="LIST_ITEM"/>
           </div>
       );
@@ -26,8 +34,6 @@ class ObRoot extends OfficeLeaf {
       return (
         <div>
             <BuchungsperiodeWaehlen size="LIST_ITEM"/>
-            <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
-            <BelegeAuswerten size="LIST_ITEM"/>
           </div>
       );
   }
