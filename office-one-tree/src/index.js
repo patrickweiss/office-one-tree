@@ -16,9 +16,13 @@ const initial = {
 			leaf:'ObRoot'
 		},
 		BM: {
+			ooBooks:{
+				geschaeftsjahrVon:new Date("Jan 01, 2018"),
+				geschaeftsjahrBis:new Date("Dec 31, 2018")
+			},
 			oofolder:{
 				driveId: '',
-				driveName: 'book one',
+				driveName: 'book 2018',
 				ootype: 'OOFolder',
 				oofolders: [],
 				oofiles: []
