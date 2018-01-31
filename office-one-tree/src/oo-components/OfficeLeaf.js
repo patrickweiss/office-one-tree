@@ -29,10 +29,11 @@ class OfficeLeaf extends Component {
     var CurrentLeaf;
     var pathHTML = [];
     //Buchungsperiode einfügen, wenn diese ausgewählt wurde
-    if (window.store.getState().UI.buchungsperiode)this.path.splice(1,0,"BuchungsperiodeWaehlen");
-    for (var i = 0; i < this.path.length; i++) {
-      CurrentLeaf = components[this.path[i]];
-      if (i === this.path.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" />);
+    var pathWithMonth=this.path.slice();
+    if (window.store.getState().UI.buchungsperiode)pathWithMonth.splice(1,0,"BuchungsperiodeWaehlen");
+    for (var i = 0; i < pathWithMonth.length; i++) {
+      CurrentLeaf = components[pathWithMonth[i]];
+      if (i === pathWithMonth.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" />);
         else pathHTML.push(<CurrentLeaf size="ICON" />);
     }
     return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
@@ -76,7 +77,7 @@ class OfficeLeaf extends Component {
         case 'MOBILE':
             return <div>{this.renderPath()}{this.renderMobile()}</div>;
         default:
-            return <h1>Component has no valis size</h1>
+            return <h1>Component has no valid size</h1>
     }
     
   }

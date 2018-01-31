@@ -8,6 +8,10 @@ import { compose } from 'redux';
 import { applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
+/* todo: https://www.npmjs.com/package/accounting-js
+https://www.npmjs.com/package/compress.js
+*/
+
 const initial = {
 		UI: {
 			loggedIn: false,
