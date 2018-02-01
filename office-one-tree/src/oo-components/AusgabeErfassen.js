@@ -8,11 +8,30 @@ class AusgabeErfassen extends OfficeLeaf {
     this.subject= "Template";
     this.verb="change";
     this.path=["ObRoot","AusgabeErfassen"];
+    this.betrag="Betrag";
+    this.konto="Konto";
+    this.state={seite:"Initialisiert"};
+    this.handleBetrag=this.handleBetrag.bind(this);
+    this.handleKonto=this.handleKonto.bind(this);
   }
   renderListItem(){
     return(
-      <div className="LIST_ITEM">UI um Buchungssatz zu erfassen</div>
+      <div>
+      <div className="LIST_ITEM">
+      <button onClick={this.handleBetrag}>{this.betrag}</button><button onClick={this.handleKonto}>{this.konto}</button>
+      
+      </div>
+      <div className="LIST_ITEM">
+      {this.state.seite}
+      </div>
+      </div>
       ) ;
+  }
+  handleBetrag(){
+    this.setState({seite:"Betrag"});
+  }
+  handleKonto(){
+    this.setState({seite:"Konto"});
   }
 }
 components.AusgabeErfassen=AusgabeErfassen;
