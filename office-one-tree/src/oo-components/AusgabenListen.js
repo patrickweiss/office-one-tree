@@ -11,7 +11,7 @@ class AusgabenListen extends OfficeLeaf {
   }
   renderListItem() {
     return (
-    <div className="LIST_ITEM">
+    <div className="LIST_ITEM" >
     Ausgabeliste kurz
     <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>
     </div>);

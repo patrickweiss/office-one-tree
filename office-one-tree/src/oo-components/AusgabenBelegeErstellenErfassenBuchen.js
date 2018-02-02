@@ -12,13 +12,18 @@ class AusgabenBelegeErstellenErfassenBuchen extends OfficeLeaf {
     super.initialize(newProps);
     this.charactericon="Au";
   }
+  
+   renderListItem(){
+      return <div className="ausgabe-erstellen-button"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
+  }
+  
   renderMobile() {
     return (
       <div>
-        <AusgabenListen size="LIST_ITEM"/>
+        <AusgabenListen  size="LIST_ITEM"/>
         <AusgabeErfassen size="LIST_ITEM"/>
       </div>
-    )
+    );
   }
 }
 components.AusgabenBelegeErstellenErfassenBuchen = AusgabenBelegeErstellenErfassenBuchen;

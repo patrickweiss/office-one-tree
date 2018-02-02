@@ -25,6 +25,7 @@ class OfficeLeaf extends Component {
   renderListItem(){
       return <div className="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
   }
+  
   renderPath() {
     var CurrentLeaf;
     var pathHTML = [];
