@@ -11,8 +11,8 @@ class EinnahmenBelegeErstellenErfassenBuchen extends OfficeLeaf {
     this.path=["ObRoot","EinnahmenBelegeErstellenErfassenBuchen"];
   }
   
-    renderListItem(){
-      return <div className="ausgabe-erstellen-button"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
+  renderListItem(){
+      return <div className="einahme-erstellen-button"><button type="button" className="button-text" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
   }
 }
 components.EinnahmenBelegeErstellenErfassenBuchen=EinnahmenBelegeErstellenErfassenBuchen;

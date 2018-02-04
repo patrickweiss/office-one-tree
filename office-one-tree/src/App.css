@@ -1,3 +1,68 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+* {
+        /*Reset's every elements apperance*/
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        border-spacing: 0;
+        font-size: 16px;
+        font-weight: normal;
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        text-decoration: none;
+        text-indent: 0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 .App {
   text-align: center;
 
@@ -35,38 +100,36 @@ body{
 
 .months{
 	text-align: left;
-	margin-left: 30px;
+	margin-left: 15px;
 
 }
 
 .td-left{
-  width: 350px;
-	height: 100px;
-	border-radius: 6px;
+  width: 175px;
+	height: 50px;
+	border-radius: 3px;
 	background-color: #ffffff;
-	box-shadow: 0 2px 23px 0 #e4e6e9;
+	box-shadow: 0 1px 11.5px 0 #e4e6e9;
 	border-style: none;
 	text-align: left;
-	
-	font-family: Lato;
-	font-size: 42px;
-	font-weight: 500;
-	letter-spacing: 1.7px;
+	font-family: 'Lato', sans-serif;
+	font-size: 21px;
+	font-weight: 400;
+	letter-spacing: 0.8px;
 	color: #6b7897;
 }
 
 .td-right{
-  width: 350px;
-	height: 100px;
-	border-radius: 6px;
+  width: 175px;
+	height: 50px;
+	border-radius: 3px;
 	background-color: #ffffff;
-	box-shadow: 0 2px 23px 0 #e4e6e9;
+	box-shadow: 0 1px 11.5px 0 #e4e6e9;
 	border-style: none;
-	
-	font-family: Lato;
-	font-size: 42px;
-	font-weight: 500;
-	letter-spacing: 1.7px;
+	font-family: 'Lato', sans-serif;
+	font-size: 21px;
+	font-weight: 400;
+	letter-spacing: 0.8px;
 	color: #6b7897;
 
 }
@@ -76,7 +139,7 @@ body{
 }
 
 td{
-	padding-top: 20px;
+	padding-top: 10px;
 	border:0;
 }
 
@@ -85,58 +148,91 @@ table{
 }
 
 .list-item-title{
-	font-family: Lato;
-	font-size: 30px;
-	font-weight: 500;
-	letter-spacing: 1.2px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0.6px;
 	color: #6b7897;
 	text-transform: uppercase;
-	margin-left: 10px;
-	margin-top: 40px;
+	margin-left: 5px;
+	margin-top: 20px;
+	margin-bottom: 5px;
 
 }
 
 .LIST_ITEM{
 	
-	border-radius: 6px;
+	border-radius: 3px;
 	background-color: #ffffff;
-	box-shadow: 0 2px 23px 0 #e4e6e9;
+	box-shadow: 0 1px 11.5px 0 #e4e6e9;
 	border-style: none;
-	font-family: Lato;
-	font-size: 30px;
-	letter-spacing: 1.7px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	letter-spacing: 0.8px;
 	text-align: center;
 	
 	
 }
 
 #belege-erfassen-div{
-	width: 690.8px;
-	height: 277px;
-	border-radius: 6px;
+	width: 345px;
+	height: 138px;
+	border-radius: 3px;
 	background-color: #ffffff;
-	box-shadow: 0 2px 23px 0 #ededed;
-	padding-left: 30px;
+	box-shadow: 0 1px 11.5px 0 #ededed;
+	padding-left: 15px;
+	margin: auto;
 }
 
 #belege-auswerten-div{
-	width: 690.8px;
-	height: 277px;
-	border-radius: 6px;
+	width: 345px;
+	height: 138px;
+	border-radius: 3px;
 	background-color: #ffffff;
-	box-shadow: 0 2px 23px 0 #ededed;
-	padding-left: 30px;
+	box-shadow: 0 1px 11.5px 0 #ededed;
+	padding-left: 15px;
+	margin: auto;
+
+	
 }
 
-.ausgabe-erstellen-button{
-	font-family: Lato;
-	font-size: 42px;
-	letter-spacing: 1.7px;
-	text-align: center;
-	color: black;
-	width: 514px;
-	height: 77px;
-	border-radius: 6px;
+.ausgabe-erstellen-div{
 	background-color: #ff6260;
-	box-shadow: 0 2px 23px 0 #e4e6e9;
+	font-family: 'Lato', sans-serif;
+	font-size: 21px;
+	letter-spacing: 0.8px;
+	text-align: center;
+	border-radius: 3px;
+	box-shadow: 0 1px 11.5px 0 #e4e6e9;
+	margin-top: 12.5px;
+	margin-left: 45px;
+	margin-right: 45px;
+	margin-bottom: 12.5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+
+ }
+ 
+ .einahme-erstellen-button{
+	font-family: 'Lato', sans-serif;
+	font-size: 21px;
+	letter-spacing: 0.8px;
+	text-align: center;
+	color: #ffffff;
+	width: 257px;
+	height: 38.5px;
+	border-radius: 3px;
+	background-color: #3bde86;
+	box-shadow: 0 1px 11.5px 0 #e4e6e9;
+	margin-top: 12.5px;
+	margin-left: 45px;
+	margin-bottom: 12.5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+
+
+ }
+ 
+ .button-text{
+ 		color: #ffffff;
  }
