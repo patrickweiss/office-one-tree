@@ -14,12 +14,10 @@ class BelegeErstellenErfassenBuchen extends OfficeLeaf {
 
   renderListItem(){
       return (
-      <div>
-        <h1 className="list-item-title">{this.subject} {this.verb}</h1>
-        <div className="LIST_ITEM" id="belege-erfassen-div">
+      <div className="LIST_ITEM">
+        <h1>{this.subject} {this.verb}</h1>
           <AusgabenBelegeErstellenErfassenBuchen  size="LIST_ITEM"/>
           <EinnahmenBelegeErstellenErfassenBuchen size="LIST_ITEM"/>
-        </div>
       </div>
       );
   }

@@ -3,6 +3,7 @@ import { OfficeLeaf, components } from './OfficeLeaf.js';
 import BelegeAuswerten from './BelegeAuswerten.js';
 import BelegeErstellenErfassenBuchen from './BelegeErstellenErfassenBuchen.js';
 import BuchungsperiodeWaehlen from './BuchungsperiodeWaehlen.js';
+import DatenArchivieren from './DatenArchivieren.js';
 
 class ObRoot extends OfficeLeaf {
   initialize(props) {
@@ -28,7 +29,8 @@ class ObRoot extends OfficeLeaf {
         <div>
             <BelegeErstellenErfassenBuchen size="LIST_ITEM"/>
             <BelegeAuswerten size="LIST_ITEM"/>
-          </div>
+            <DatenArchivieren size="LIST_ITEM" />
+        </div>
       );
     else
       return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import {OfficeLeaf,components} from './OfficeLeaf.js';
-
+import BetragEingeben from'./BetragEingeben.js';
+import KontoEingeben from'./KontoEingeben.js';
 
 class AusgabeErfassen extends OfficeLeaf {
   constructor(props) {
@@ -8,31 +9,48 @@ class AusgabeErfassen extends OfficeLeaf {
     this.subject= "Template";
     this.verb="change";
     this.path=["ObRoot","AusgabeErfassen"];
-    this.betrag="Betrag";
-    this.konto="Konto";
-    this.state={seite:"Initialisiert"};
-    this.handleBetrag=this.handleBetrag.bind(this);
-    this.handleKonto=this.handleKonto.bind(this);
+    this.handleClick=this.handleClick.bind(this);
   }
   renderListItem(){
     return(
-      <div>
       <div className="LIST_ITEM">
-      <button onClick={this.handleBetrag}>{this.betrag}</button><button onClick={this.handleKonto}>{this.konto}</button>
-      
-      </div>
       <div className="LIST_ITEM">
-      {this.state.seite}
+      <p>Neue Ausgabe erfassen</p>
+      <button onClick={this.handleClick} id='BetragEingeben'>{this.renderBetrag()}</button><button onClick={this.handleClick} id='KontoEingeben'>{this.renderKonto()}</button>
       </div>
+      {this.renderSeite()}
       </div>
       ) ;
   }
-  handleBetrag(){
-    this.setState({seite:"Betrag"});
+  
+  renderBetrag(){
+    var betrag=window.store.getState().UI.betrag;
+    console.log(betrag);
+    if (betrag===undefined)return "Betrag"; else return betrag;
+    
   }
-  handleKonto(){
-    this.setState({seite:"Konto"});
+  
+  
+  renderKonto(){
+    var konto=window.store.getState().UI.konto;
+    if (konto===undefined)return "Konto"; else return konto;
+    
   }
+  renderSeite(){
+    var content = window.store.getState().UI.content;
+    if (content ==="KontoEingeben") return (<KontoEingeben  size="LIST_ITEM"/>);
+    
+    return (<BetragEingeben  size="LIST_ITEM"/>);
+  }
+  
+
+  handleClick(e) {
+    window.store.dispatch({
+      type: 'change_leaf_content',
+      content: e.target.id
+    });
+  }
+  
 }
 components.AusgabeErfassen=AusgabeErfassen;
 

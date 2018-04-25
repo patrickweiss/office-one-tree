@@ -1,6 +1,9 @@
 button {
-    font-size: 1.33em; /* 30px/16=1.875em */
+    font-size: 1.5em; /* 30px/16=1.875em */
 }
+h1 { font-size:1.44em;}
+h2 { font-size:1.22em;}
+/*
       td{
         height:30px;
         width:70px;
@@ -11,6 +14,8 @@ button {
       table{
         width:100%;
       }
+      */
+      
 .LIST_ITEM{
     background: #f3f3f3;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.25);
@@ -24,4 +29,9 @@ button {
     border-radius: 5px;
     padding:5px 5px 5px 5px;
     margin:5px 5px 5px 5px; 
+}
+
+.numberButton{
+    font-size: 3em; 
+    width:80px;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './index.css';
 import {components} from './oo-components/OfficeLeaf.js';
 import './oo-components/ObRoot.js';
 import './oo-components/BelegeAuswerten.js';

@@ -10,7 +10,7 @@ class LeafTemplate extends OfficeLeaf {
     this.path=["ObRoot","LeafTemplate"];
   }
   renderMobile(){
-    (
+    return(
       <div>
       <h1>office one 2018</h1>
       <h2>Das Mobile Büro für 2018</h2>

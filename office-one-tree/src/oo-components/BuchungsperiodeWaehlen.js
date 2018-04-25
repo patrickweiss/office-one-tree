@@ -14,7 +14,10 @@ class BuchungsperiodeWaehlen extends OfficeLeaf {
 
     newProps.path="ObRoot,BuchungsperiodeWaehlen";
     super.initialize(newProps);
-    if (window.store.getState().UI.buchungsperiode)this.charactericon=window.store.getState().UI.buchungsperiode.split(" ")[0];
+    if (window.store.getState().UI.buchungsperiode){
+      this.charactericon=window.store.getState().UI.buchungsperiode.split(" ")[0];
+      this.subject=window.store.getState().UI.buchungsperiode;
+    }
   }
   
   renderMobile(){

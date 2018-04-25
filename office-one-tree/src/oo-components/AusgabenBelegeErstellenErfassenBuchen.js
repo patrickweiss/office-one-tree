@@ -13,9 +13,7 @@ class AusgabenBelegeErstellenErfassenBuchen extends OfficeLeaf {
     this.charactericon="Au";
   }
   
-   renderListItem(){
-      return <div className="ausgabe-erstellen-div"> <button type="button" className="button-text" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
-  }
+  
   
   renderMobile() {
     return (

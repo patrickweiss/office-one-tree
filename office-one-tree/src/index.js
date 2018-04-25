@@ -7,6 +7,9 @@ import { createStore } from 'redux'
 import { compose } from 'redux';
 import { applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import betragEingebenReducer from'./oo-components/BetragEingebenReducer.js';
+import kontoEingebenReducer from'./oo-components/KontoEingebenReducer.js';
+ 
 
 /* todo: https://www.npmjs.com/package/accounting-js
 https://www.npmjs.com/package/compress.js
@@ -30,7 +33,8 @@ const initial = {
 				ootype: 'OOFolder',
 				oofolders: [],
 				oofiles: []
-			}
+			},
+			ooKonto:['Bäckerei','Metzgerei','Getränke']
 		}
 	};
 
@@ -46,6 +50,16 @@ const reducer = (state = initial, action) => {
 	switch (action.type) {
 		case 'change_leaf':
 			newState.UI.leaf=action.newLeaf;
+			if (action.newLeaf==="BuchungsperiodeWaehlen")delete newState.UI.buchungsperiode;
+			return newState;
+		case 'change_leaf_content':
+			newState.UI.content=action.content;
+			return newState;
+		case 'type_pressed':
+			betragEingebenReducer(newState,action);
+			return newState;
+		case 'konto_selected':
+			kontoEingebenReducer(newState,action);
 			return newState;
 		case 'change_Buchungsperiode':
 			newState.UI.buchungsperiode=action.newBuchungsperiode;
