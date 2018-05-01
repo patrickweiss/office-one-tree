@@ -11,16 +11,17 @@ class DatenArchivieren extends OfficeLeaf {
     this.path=["ObRoot","DatenArchivieren"];
   }
   renderMobile() {
-    var buttonStyle = {display: 'none'}
-    return (
+     return (
       <div>
       <h1>Daten in Google Drive archivieren</h1>
       <h2>In Google Drive anmelden</h2>
-      <p>Melden Sie sich mit einem Google Account an, um die auf den Handy gespeicherten Daten in Google Drive zu sichern</p>
-      <button id="authorize-button">Authorize</button>
-      <button id="signout-button">Sign Out</button>
+      <p>Melden Sie sich mit einem Google Account an, um die auf dem Handy gespeicherten office one Daten in Google Drive zu sichern</p>
+      <button id="authorize-button">Anmelden</button>
+      <button id="signout-button">Abmelden</button>
       </div>
     );
+    
+
   }
   componentDidMount(){
       authorizeButton = document.getElementById('authorize-button');
@@ -43,14 +44,14 @@ components.DatenArchivieren=DatenArchivieren;
      // Client ID and API key from the Developer Console
       var CLIENT_ID = "231574892308-jrng78q9behcs4lbsl85pu0jugqb6vc6.apps.googleusercontent.com";
       var API_KEY = "AIzaSyBAh6zYniTB-LOJssXydgmx621-CoRM-Xw";
+      
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://script.googleapis.com/$discovery/rest?version=v1"];
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      var SCOPES = 'https://www.googleapis.com/auth/script.projects';
-
+      var SCOPES = 'https://www.googleapis.com/auth/script.projects https://mail.google.com/ https://www.googleapis.com/auth/documents https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/script.container.ui https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/userinfo.email';
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
 
@@ -87,10 +88,21 @@ components.DatenArchivieren=DatenArchivieren;
        *  appropriately. After a sign-in, the API is called.
        */
       function updateSigninStatus(isSignedIn) {
-        console.log(isSignedIn);
-        if (isSignedIn)callScriptFunction();
+        window.store.dispatch({
+          type: 'update_signin_status',
+          isSignedIn: isSignedIn
+        });
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'block';
+          callScriptFunction();
+        }
+        else {
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
       }
-
+      
       /**
        *  Sign in the user upon button click.
        */
@@ -133,7 +145,7 @@ function callScriptFunction() {
   gapi.client.script.scripts.run({
     'scriptId': scriptId,
     'resource': {
-      'function': 'getFoldersUnderRoot'
+      'function': 'getOrCreateDriveData'
     }
   }).then(function(resp) {
     var result = resp.result;
@@ -173,6 +185,12 @@ function callScriptFunction() {
         appendPre('Folders under your root folder:');
         Object.keys(folderSet).forEach(function(id){
           appendPre('\t' + folderSet[id] + ' (' + id  + ')');
+        });
+        
+        /***** Hier wird jetzt völlig falsch (eigentlich muss man das mit einem thug machen...) eine Action dipatched*/
+        window.store.dispatch({
+          type: 'Server_antwortet',
+          response: result.response.result
         });
       }
     }
