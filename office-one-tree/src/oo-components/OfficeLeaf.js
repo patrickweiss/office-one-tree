@@ -34,8 +34,8 @@ class OfficeLeaf extends Component {
     if (window.store.getState().UI.buchungsperiode)pathWithMonth.splice(1,0,"BuchungsperiodeWaehlen");
     for (var i = 0; i < pathWithMonth.length; i++) {
       CurrentLeaf = components[pathWithMonth[i]];
-      if (i === pathWithMonth.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" />);
-        else pathHTML.push(<CurrentLeaf size="ICON" />);
+      if (i === pathWithMonth.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" key={i} />);
+        else pathHTML.push(<CurrentLeaf size="ICON" key={i} />);
     }
     return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
   }
@@ -60,7 +60,7 @@ class OfficeLeaf extends Component {
       )
   }
   handleClick(e) {
-      console.log(this.constructor.name+" geklickt");
+      window.logger.debug("3. Event:"+ this.constructor.name);
       window.store.dispatch({
           type: 'change_leaf',
           newLeaf: this.constructor.name

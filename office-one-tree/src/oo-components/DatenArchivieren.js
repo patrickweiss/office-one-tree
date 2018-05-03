@@ -11,6 +11,7 @@ class DatenArchivieren extends OfficeLeaf {
     this.path=["ObRoot","DatenArchivieren"];
   }
   renderMobile() {
+    window.logger.debug("2. DatenArchivieren.renderMobile");
      return (
       <div>
       <h1>Daten in Google Drive archivieren</h1>
@@ -24,11 +25,10 @@ class DatenArchivieren extends OfficeLeaf {
 
   }
   componentDidMount(){
+    window.logger.debug("2. DatenArchivieren.componentDidMount");
       authorizeButton = document.getElementById('authorize-button');
       signoutButton = document.getElementById('signout-button');
-
-    if (this.size==="MOBILE"){
-      console.log("Jetzt Google API intialisieren");
+    if (this.size==="MOBILE" && window.store.getState().UI.loggedIn===false){
       handleClientLoad();
     }
   }
@@ -59,6 +59,7 @@ components.DatenArchivieren=DatenArchivieren;
        *  On load, called to load the auth2 library and API client library.
        */
       function handleClientLoad() {
+        window.logger.debug("handleClientLoad");
         gapi.load('client:auth2', initClient);
       }
 
@@ -67,6 +68,7 @@ components.DatenArchivieren=DatenArchivieren;
        *  listeners.
        */
       function initClient() {
+        window.logger.debug("initClient");
         gapi.client.init({
           apiKey: API_KEY,
           clientId: CLIENT_ID,
@@ -88,6 +90,7 @@ components.DatenArchivieren=DatenArchivieren;
        *  appropriately. After a sign-in, the API is called.
        */
       function updateSigninStatus(isSignedIn) {
+        window.logger.debug("UpdateSigninStatus");
         window.store.dispatch({
           type: 'update_signin_status',
           isSignedIn: isSignedIn
@@ -95,7 +98,7 @@ components.DatenArchivieren=DatenArchivieren;
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          callScriptFunction();
+          callScriptFunction('getOrCreateDriveData');
         }
         else {
           authorizeButton.style.display = 'block';
@@ -107,6 +110,7 @@ components.DatenArchivieren=DatenArchivieren;
        *  Sign in the user upon button click.
        */
       function handleAuthClick(event) {
+        window.logger.debug("handleAuthClick");
         gapi.auth2.getAuthInstance().signIn();
       }
 
@@ -114,6 +118,7 @@ components.DatenArchivieren=DatenArchivieren;
        *  Sign out the user upon button click.
        */
       function handleSignoutClick(event) {
+        window.logger.debug("handleSignoutClick");
         gapi.auth2.getAuthInstance().signOut();
       }
 
@@ -135,8 +140,10 @@ components.DatenArchivieren=DatenArchivieren;
 /**
  * Load the API and make an API call.  Display the results on the screen.
  */
-function callScriptFunction() {
+function callScriptFunction(functionName) {
   var scriptId = "1Exwlfi4KaSGYWrZmHeq7g0YqxYcrS8LwJN_Xc3yG-7xd6P4Cj7FdsfdP";
+
+  window.store.dispatch({type: 'Server_Aufruf',functionName});
 
   // Call the Apps Script API run method
   //   'scriptId' is the URL parameter that states what script to run
@@ -145,7 +152,7 @@ function callScriptFunction() {
   gapi.client.script.scripts.run({
     'scriptId': scriptId,
     'resource': {
-      'function': 'getOrCreateDriveData'
+      'function': functionName
     }
   }).then(function(resp) {
     var result = resp.result;
@@ -154,9 +161,9 @@ function callScriptFunction() {
       // started executing.
       appendPre('Error calling API:');
       appendPre(JSON.stringify(result, null, 2));
-    } else if (result.error) {
+    }
+    else if (result.error) {
       // The API executed, but the script returned an error.
-
       // Extract the first (and only) set of error details.
       // The values of this object are the script's 'errorMessage' and
       // 'errorType', and an array of stack trace elements.
@@ -169,34 +176,17 @@ function callScriptFunction() {
         appendPre('Script error stacktrace:');
         for (var i = 0; i < error.scriptStackTraceElements.length; i++) {
           var trace = error.scriptStackTraceElements[i];
-          appendPre('\t' + trace.function + ':' + trace.lineNumber);
+          appendPre('\t' + trace.function+':' + trace.lineNumber);
         }
       }
-    } else {
-      // The structure of the result will depend upon what the Apps
-      // Script function returns. Here, the function returns an Apps
-      // Script Object with String keys and values, and so the result
-      // is treated as a JavaScript object (folderSet).
-
-      var folderSet = result.response.result;
-      if (Object.keys(folderSet).length === 0) {
-          appendPre('No folders returned!');
-      } else {
-        appendPre('Folders under your root folder:');
-        Object.keys(folderSet).forEach(function(id){
-          appendPre('\t' + folderSet[id] + ' (' + id  + ')');
-        });
-        
-        /***** Hier wird jetzt völlig falsch (eigentlich muss man das mit einem thug machen...) eine Action dipatched*/
-        window.store.dispatch({
-          type: 'Server_antwortet',
-          response: result.response.result
-        });
-      }
+    }
+    else {
+      appendPre(result.response.result);
+      /***** Hier wird jetzt völlig falsch (eigentlich muss man das mit einem thunk machen...) eine Action dipatched*/
+      window.store.dispatch({type: 'Server_antwortet',response: result.response.result});
     }
   });
 }
-
 
 
 

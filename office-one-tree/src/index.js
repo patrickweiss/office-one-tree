@@ -9,11 +9,17 @@ import { applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import betragEingebenReducer from'./oo-components/BetragEingebenReducer.js';
 import kontoEingebenReducer from'./oo-components/KontoEingebenReducer.js';
+import Logger from './oo-components/Logger.js';
+//import serverAufrufReducer from'./oo-components/ServerAufrufReducer.js';
  
 
 /* todo: https://www.npmjs.com/package/accounting-js
 https://www.npmjs.com/package/compress.js
 */
+
+window.logger = new Logger("debug");
+console.log(window.logger);
+window.logger.debug("hallo");
 
 const initial = {
 	UI: {
@@ -29,7 +35,9 @@ const initial = {
 
 
 const reducer = (state = initial, action) => {
-	console.log(action);
+	window.logger.debug("1. State aktualisieren---------------------------------------------");
+	window.logger.debug("1. ACTION:"+action.type);
+
 	var newState = JSON.parse(JSON.stringify(state));
 	switch (action.type) {
 		case 'change_leaf':
@@ -52,8 +60,13 @@ const reducer = (state = initial, action) => {
 		case 'update_signin_status':
 			newState.UI.loggedIn=action.isSignedIn;
 			return newState;
+		case 'Server_Aufruf':
+			//serverAufrufReducer(newState,action);
+			newState.UI.leaf="OrdnerEinrichten";
+			return newState;
 		case 'Server_antwortet':
 			newState.BM.rootFolder=action.response;
+			newState.UI.leaf="DatenArchivieren";
 			return newState;
 		default:
 			return newState;
@@ -66,7 +79,7 @@ if (window.__REDUX_DEVTOOLS_EXTENSION__){
 		applyMiddleware(ReduxThunk),
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 		);
-} else reduxMiddleware = 	applyMiddleware(ReduxThunk);
+} else reduxMiddleware = applyMiddleware(ReduxThunk);
 		
 window.store = createStore(
 		reducer,
@@ -76,9 +89,8 @@ window.store = createStore(
 ReactDOM.render(<App/>, document.getElementById('root'));
 
 registerServiceWorker();
-
-window.store.subscribe(() =>{
-  console.log("Dom wird neugerendert");
-  ReactDOM.render(<App/>, document.getElementById('root'));
-}
-);
+window.store.subscribe(() => {
+    window.logger.debug("2. vor render ---------------------------------------------");
+	ReactDOM.render(<App/>, document.getElementById('root'));
+    window.logger.debug("2. nach render ---------------------------------------------");
+});

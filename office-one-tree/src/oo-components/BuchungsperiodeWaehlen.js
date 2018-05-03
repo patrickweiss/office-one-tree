@@ -26,28 +26,28 @@ class BuchungsperiodeWaehlen extends OfficeLeaf {
         <tbody>
      
         <tr>
-          <td><button className="td-left" type="button" onClick={this.handleClick}> <div className="months"> <span className="month-num">01</span> Januar</div></button></td>
-          <td><button type="button" className="td-right" onClick={this.handleClick}> <div className="months"> <span className="month-num">07 </span> Juli</div></button></td>
+          <td><button className="td-left" type="button" onClick={this.handleClick}> <div className="months"><span className="month-num">01</span> Januar</div></button></td>
+          <td><button type="button" className="td-right" onClick={this.handleClick}> <div className="months"><span className="month-num">07</span> Juli</div></button></td>
         </tr>
         <tr>
-          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">02 </span> Februar</div></button></td>
-          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">08 </span> August</div></button></td>
+          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">02</span> Februar</div></button></td>
+          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">08</span> August</div></button></td>
         </tr>
         <tr>
-          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">03 </span> März</div></button></td>
-          <td><button type="button" className="td-right"onClick={this.handleClick}><div className="months"><span className="month-num">09 </span> September</div></button></td>
+          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">03</span> März</div></button></td>
+          <td><button type="button" className="td-right"onClick={this.handleClick}><div className="months"><span className="month-num">09</span> September</div></button></td>
         </tr>
         <tr>
-          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">04 </span> April</div></button></td>
-          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">10 </span> Oktober</div></button></td>
+          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">04</span> April</div></button></td>
+          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">10</span> Oktober</div></button></td>
         </tr>
         <tr>
-          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">05 </span> Mai</div></button></td>
-          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">11 </span> November</div></button></td>
+          <td><button type="button" className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">05</span> Mai</div></button></td>
+          <td><button type="button"className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">11</span> November</div></button></td>
         </tr>
         <tr>
-          <td><button type="button"  className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">06 </span> Juni</div></button></td>
-          <td><button type="button" className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">12 </span> Dezember</div></button></td>
+          <td><button type="button"  className="td-left" onClick={this.handleClick}><div className="months"><span className="month-num">06</span> Juni</div></button></td>
+          <td><button type="button" className="td-right" onClick={this.handleClick}><div className="months"><span className="month-num">12</span> Dezember</div></button></td>
         </tr>
       </tbody>
     </table> 
