@@ -9,25 +9,50 @@ class DatenArchivieren extends OfficeLeaf {
     this.subject= "Daten";
     this.verb="archivieren";
     this.path=["ObRoot","DatenArchivieren"];
+    this.handleAnmelden = this.handleAnmelden.bind(this);
+    this.handleAbmelden = this.handleAbmelden.bind(this);
   }
   renderMobile() {
     window.logger.debug("2. DatenArchivieren.renderMobile");
+    var styleSichtbar =  {display: 'block'};
+    var styleUnsichtbar = {display: 'none'};
+    var styleAnmelden;
+    var styleAbmelden;
+    if (window.store.getState().UI.loggedIn){
+      styleAnmelden=styleUnsichtbar;
+      styleAbmelden=styleSichtbar;
+    }else
+    {
+      styleAnmelden=styleSichtbar;
+      styleAbmelden=styleUnsichtbar;
+    }
+    
      return (
       <div>
       <h1>Daten in Google Drive archivieren</h1>
       <h2>In Google Drive anmelden</h2>
       <p>Melden Sie sich mit einem Google Account an, um die auf dem Handy gespeicherten office one Daten in Google Drive zu sichern</p>
-      <button id="authorize-button">Anmelden</button>
-      <button id="signout-button">Abmelden</button>
+      <div style={styleAnmelden}><button id="authorize-button" onClick={this.handleAnmelden}>Anmelden</button></div>
+      <div style={styleAbmelden}><button id="signout-button" onClick={this.handleAbmelden}>Abmelden</button></div>
       </div>
     );
     
 
   }
+  
+  handleAnmelden(){
+    window.logger.debug("3. Event: Anmelden");
+    gapi.auth2.getAuthInstance().signIn();
+  }
+  
+  handleAbmelden(){
+    window.logger.debug("3. Event: Abmelden");
+    gapi.auth2.getAuthInstance().signOut();
+  }
+  
   componentDidMount(){
     window.logger.debug("2. DatenArchivieren.componentDidMount");
-      authorizeButton = document.getElementById('authorize-button');
-      signoutButton = document.getElementById('signout-button');
+
     if (this.size==="MOBILE" && window.store.getState().UI.loggedIn===false){
       handleClientLoad();
     }
@@ -52,8 +77,7 @@ components.DatenArchivieren=DatenArchivieren;
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
       var SCOPES = 'https://www.googleapis.com/auth/script.projects https://mail.google.com/ https://www.googleapis.com/auth/documents https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/forms https://www.googleapis.com/auth/script.container.ui https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/userinfo.email';
-      var authorizeButton = document.getElementById('authorize-button');
-      var signoutButton = document.getElementById('signout-button');
+console.log("3. Initialisierung der Google API Konfiguration");
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -80,8 +104,6 @@ components.DatenArchivieren=DatenArchivieren;
 
           // Handle the initial sign-in state.
           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-          authorizeButton.onclick = handleAuthClick;
-          signoutButton.onclick = handleSignoutClick;
         });
       }
 
@@ -95,39 +117,10 @@ components.DatenArchivieren=DatenArchivieren;
           type: 'update_signin_status',
           isSignedIn: isSignedIn
         });
-        if (isSignedIn) {
-          authorizeButton.style.display = 'none';
-          signoutButton.style.display = 'block';
-          callScriptFunction('getOrCreateDriveData');
-        }
-        else {
-          authorizeButton.style.display = 'block';
-          signoutButton.style.display = 'none';
-        }
+        if (isSignedIn)callScriptFunction('getOrCreateDriveData');
       }
       
-      /**
-       *  Sign in the user upon button click.
-       */
-      function handleAuthClick(event) {
-        window.logger.debug("handleAuthClick");
-        gapi.auth2.getAuthInstance().signIn();
-      }
-
-      /**
-       *  Sign out the user upon button click.
-       */
-      function handleSignoutClick(event) {
-        window.logger.debug("handleSignoutClick");
-        gapi.auth2.getAuthInstance().signOut();
-      }
-
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node. Used to display the results of the API call.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
+ 
       function appendPre(message) {
         console.log(message);
       }
