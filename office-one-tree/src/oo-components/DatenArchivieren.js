@@ -101,7 +101,8 @@ console.log("3. Initialisierung der Google API Konfiguration");
         }).then(function () {
           // Listen for sign-in state changes.
           gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
+          window.accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+ 
           // Handle the initial sign-in state.
           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         });

@@ -9,6 +9,10 @@ import { applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import betragEingebenReducer from'./oo-components/BetragEingebenReducer.js';
 import kontoEingebenReducer from'./oo-components/KontoEingebenReducer.js';
+import photoMachenReducer from'./oo-components/PhotoMachenReducer.js';
+import changeLeafContentReducer from'./oo-components/ChangeLeafContentReducer.js';
+import belegSpeichernReducer from'./oo-components/BelegSpeichernReducer.js';
+
 import Logger from './oo-components/Logger.js';
 //import serverAufrufReducer from'./oo-components/ServerAufrufReducer.js';
  
@@ -45,13 +49,20 @@ const reducer = (state = initial, action) => {
 			if (action.newLeaf==="BuchungsperiodeWaehlen")delete newState.UI.buchungsperiode;
 			return newState;
 		case 'change_leaf_content':
-			newState.UI.content=action.content;
+			changeLeafContentReducer(newState,action);
+			//newState.UI.content=action.content;
 			return newState;
 		case 'type_pressed':
 			betragEingebenReducer(newState,action);
 			return newState;
 		case 'konto_selected':
 			kontoEingebenReducer(newState,action);
+			return newState;
+		case 'photo_gemacht':
+			photoMachenReducer(newState,action);
+			return newState;
+		case 'beleg_speichern':
+			belegSpeichernReducer(newState,action);
 			return newState;
 		case 'change_Buchungsperiode':
 			newState.UI.buchungsperiode=action.newBuchungsperiode;
