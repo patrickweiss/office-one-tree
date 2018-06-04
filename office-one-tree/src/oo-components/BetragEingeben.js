@@ -14,6 +14,7 @@ class BetragEingeben extends OfficeLeaf {
   renderListItem() {
     return (
        <div className="LIST_ITEM">
+       <p>Betrag eingeben</p>
       <table>
         <tbody>
      
@@ -33,8 +34,8 @@ class BetragEingeben extends OfficeLeaf {
           <td><button className="numberButton" onClick={this.handleClick}>9</button></td>
         </tr>
          <tr>
-          <td><button className="numberButton" onClick={this.handleClick}>,</button></td>
           <td><button className="numberButton" onClick={this.handleClick}>0</button></td>
+          <td><button className="numberButton" onClick={this.handleClick}>00</button></td>
           <td><button className="numberButton" onClick={this.handleClick}>&lt;</button></td>
         </tr>
         

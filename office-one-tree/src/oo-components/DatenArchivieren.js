@@ -27,16 +27,27 @@ class DatenArchivieren extends OfficeLeaf {
       styleAbmelden=styleUnsichtbar;
     }
     
+     if (window.store.getState().UI.loggedIn)
      return (
       <div>
-      <h1>Daten in Google Drive archivieren</h1>
-      <h2>In Google Drive anmelden</h2>
-      <p>Melden Sie sich mit einem Google Account an, um die auf dem Handy gespeicherten office one Daten in Google Drive zu sichern</p>
+      <h1>Daten mit Google Drive Ordner "oo18" synchronisiert</h1>
+      <h2>Aktuelles Google Konto: {window.store.getState().UI.user} </h2>
+      <p>Um sich mit einem anderen Konto anzumelden, klicken Sie zuerst auf Abmelden und melden sich danach mit dem anderen Konto wieder an.</p>
       <div style={styleAnmelden}><button id="authorize-button" onClick={this.handleAnmelden}>Anmelden</button></div>
       <div style={styleAbmelden}><button id="signout-button" onClick={this.handleAbmelden}>Abmelden</button></div>
       </div>
     );
-    
+    else
+    return (
+      <div>
+      <h1>office one 2018</h1>
+      <h2>Ausgaben und Einnahmen erfassen und archivieren</h2>
+      <p>Ausgaben und Einnahmen mit Beleg erfassen und in Google Drive archivieren.</p>
+      <p>Um Ordner für die Belege und Tabellen zur Auswertung von Ausgaben und Einnahmen, zur Ermittlung von Gewinn und Verlust und zur Erstellung von Steuerklärungen in Google Drive anzulegen, klicken Sie den folgenden Link</p>
+      <div style={styleAnmelden}><button id="authorize-button" onClick={this.handleAnmelden}>Anmelden</button></div>
+      <div style={styleAbmelden}><button id="signout-button" onClick={this.handleAbmelden}>Abmelden</button></div>
+      </div>
+    );
 
   }
   
@@ -128,7 +139,7 @@ console.log("3. Initialisierung der Google API Konfiguration");
 
   
 
-/* Hier habe ich den Root Order Aufrug eingebaut **************************************************************************************
+/* Hier habe ich den Root Order Aufruf eingebaut **************************************************************************************
 
 */
 /**

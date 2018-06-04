@@ -9,28 +9,33 @@ class KontoEingeben extends OfficeLeaf {
     this.subject = "Konto";
     this.verb = "eingeben";
     this.path = [];
-    this.kontenHTML = window.store.getState().BM.ooKonto.map((konto) =>
-      <button onClick={this.handleClick}>{konto}</button> 
-    );
+
+    if (window.store.getState().BM.serverState) {
+     this.kontenHTML = [];
+     var ooKonten = window.store.getState().BM.serverState.ooKonten;
+     for (var konto in ooKonten)
+     {
+       this.kontenHTML.push(<div className="LIST_ITEM" key={konto} id={konto} onClick={this.handleClick}><button id={konto}>{ooKonten[konto]["Konto"]} {ooKonten[konto]["Standard MwSt."]}</button></div>);
+     }
+    }
+    else {
+      this.kontenHTML = window.store.getState().BM.ooKonto.map((konto) => {
+        return (<div className="LIST_ITEM"><button onClick={this.handleClick}>{konto}</button></div>);
+      });
+    }
   }
 
   renderListItem() {
     return (
       <div className="LIST_ITEM">
+      <p>Konto auswählen</p>
       {this.kontenHTML}
       </div>
-    )
-  }
-  
-  renderKonto(kontoName){
-    console.log(kontoName);
-    return(
-      <button onClick={this.handleClick}>KontoName</button> 
-      );
+    );
   }
   
   handleClick(e) {
-    var kontoName = e.target.textContent;
+    var kontoName = e.target.getAttribute('id');
     window.store.dispatch({
       type: 'konto_selected',
       kontoName: kontoName

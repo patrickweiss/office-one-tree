@@ -1,8 +1,32 @@
+
 button {
-    font-size: 1.5em; /* 30px/16=1.875em */
+     background:none!important;
+     color: #0000EE;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     /*border is optional*/
+     border-bottom:1px solid #444; 
+     cursor: pointer;
 }
-h1 { font-size:1.44em;}
-h2 { font-size:1.22em;}
+
+
+
+/* GLOBAL STYLES */
+*{font-family: 'Open Sans', sans-serif;font-size: 20px;}
+h1, h2,h3{color:#226e93;}
+h1{font-weight: 200;font-size:1.44em;text-align: center;}
+h2{font-weight: 200;font-size:1.2em;text-align: center;}
+p{
+    text-align: center;
+    margin:3px 3px 3px 3px;
+}
+ul{
+    margin:0px 0px 0px 0px;
+}
+li{
+    font-size:0.66em
+}
 /*
       td{
         height:30px;
@@ -17,14 +41,14 @@ h2 { font-size:1.22em;}
       */
       
 .LIST_ITEM{
-    background: #f3f3f3;
+    background: #ffffff;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.25);
     border-radius: 5px;
     padding:5px 5px 5px 5px;
     margin:5px 5px 5px 5px; 
 }
 .MOBILE{
-    background: #f0f0f0;
+    background: #ffffff;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.25);
     border-radius: 5px;
     padding:5px 5px 5px 5px;
@@ -32,6 +56,6 @@ h2 { font-size:1.22em;}
 }
 
 .numberButton{
-    font-size: 3em; 
+    font-size: 2.5em; 
     width:80px;
 }

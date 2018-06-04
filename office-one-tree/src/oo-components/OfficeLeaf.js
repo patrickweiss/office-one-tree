@@ -16,15 +16,6 @@ class OfficeLeaf extends Component {
     this.charactericon=this.subject[0]+this.verb[0];
     if (props.path)this.path=props.path.split(",");else this.path=["OfficeLeaf","ObRoot"];
   }
-  renderIcon(){
-      return <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
-  }
-  renderButton(){
-      return <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
-  }
-  renderListItem(){
-      return <div className="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
-  }
   
   renderPath() {
     var CurrentLeaf;
@@ -34,12 +25,27 @@ class OfficeLeaf extends Component {
     if (window.store.getState().UI.buchungsperiode)pathWithMonth.splice(1,0,"BuchungsperiodeWaehlen");
     for (var i = 0; i < pathWithMonth.length; i++) {
       CurrentLeaf = components[pathWithMonth[i]];
-      if (i === pathWithMonth.length - 1) pathHTML.push(<CurrentLeaf size="BUTTON" key={i} />);
-        else pathHTML.push(<CurrentLeaf size="ICON" key={i} />);
+      if (i === pathWithMonth.length - 1) {
+        pathHTML.push(<CurrentLeaf size="BUTTON" key={i} />);
+        pathHTML.push("/");
+      }
+        
+        else {
+          pathHTML.push(<CurrentLeaf size="ICON" key={i} />);
+          pathHTML.push("/");
+        }
     }
     return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
   }
-  
+  renderIcon(){
+      return <button type="button" onClick={this.handleClick}>{this.charactericon}</button>;
+  }
+  renderButton(){
+      return <button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button>;
+  }
+  renderListItem(){
+      return <div className="LIST_ITEM"><button type="button" onClick={this.handleClick}>{this.subject} {this.verb}</button></div>;
+  }
   renderMobile(){
   
       return(
@@ -58,6 +64,27 @@ class OfficeLeaf extends Component {
           </ul>
         </div>
       )
+  }
+  
+  renderHelp() {
+    var CurrentLeaf;
+    var pathHTML = [];
+    //Buchungsperiode einfügen, wenn diese ausgewählt wurde
+    var pathWithMonth=this.path.slice();
+    if (window.store.getState().UI.buchungsperiode)pathWithMonth.splice(1,0,"BuchungsperiodeWaehlen");
+    for (var i = 0; i < pathWithMonth.length; i++) {
+      CurrentLeaf = components[pathWithMonth[i]];
+      if (i === pathWithMonth.length - 1) {
+        pathHTML.push(<CurrentLeaf size="BUTTON" key={i} />);
+        pathHTML.push("/");
+      }
+        
+        else {
+          pathHTML.push(<CurrentLeaf size="ICON" key={i} />);
+          pathHTML.push("/");
+        }
+    }
+    return <div className="LIST_ITEM" id="path">{pathHTML}</div>;
   }
   handleClick(e) {
       window.logger.debug("3. Event:"+ this.constructor.name);

@@ -12,9 +12,9 @@ class OrdnerEinrichten extends OfficeLeaf {
   renderMobile(){
     return(
       <div>
-      <h1>Ordner einrichten</h1>
-      <h2>Archivordner werden in Google Drive angelegt</h2>
-      <p>... lustiger Text ...</p></div>
+      <h1>Daten mit Google Drive synchronisieren</h1>
+      <h2>Belegdaten werden aus Goolge Drive geladen</h2>
+      <p>Beim ersten Aufruf von office one 2018 werden in Google Drive Ordner und Tabellen angelegt. Dies kann bis zu 2 Minuten dauern.</p></div>
     );
   
   }
