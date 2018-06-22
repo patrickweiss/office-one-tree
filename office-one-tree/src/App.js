@@ -6,6 +6,7 @@ import './oo-components/BelegeAuswerten.js';
 import './oo-components/BelegeErstellenErfassenBuchen.js';
 import './oo-components/OfficeOne2018.js';
 import './oo-components/OrdnerEinrichten.js';
+import './oo-components/ElsterInEinfachUndSchnell.js';
 
 
 

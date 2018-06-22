@@ -36,8 +36,8 @@ window.logger.debug("hallo");
 
 var initial = {
 	UI: {
-		leaf: 'DatenArchivieren',
-		help: true,
+		leaf: 'ElsterInEinfachUndSchnell',
+		renderHelpOf: '',
 		counter:1,
 		loggedIn: false,
 		waitingForResponse: false,

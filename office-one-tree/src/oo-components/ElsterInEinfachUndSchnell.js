@@ -1,28 +1,31 @@
 import React from 'react';
 import {OfficeLeaf,components} from './OfficeLeaf.js';
+import Help from './Help.js';
 
 
 
-class OfficeOne2018 extends OfficeLeaf {
+class ElsterInEinfachUndSchnell extends OfficeLeaf {
   constructor(props) {
     super(props);
-    this.subject= "office one";
-    this.verb="2018";
-    this.path=["ObRoot","OfficeOne2018"];
+    this.subject= "Elster in";
+    this.verb="einfach und schnell";
+    this.path=["ElsterInEinfachUndSchnell"];
   }
   renderMobile(){
-    console.log("renderMobile");
+    console.log("renderHelp");
     return (
       <div>
-      <h1>Elster in einfach und schnell</h1>
-      <h2>Ausgaben und Einnahmen erfassen und archivieren</h2>
-      <p>Ausgaben und Einnahmen mit Beleg erfassen und in Google Drive archivieren.</p>
+      <h1>Elster in <Help text="einfach"></Help> und <Help text="schnell"></Help></h1>
+      <h2>Ordner in Google Drive anlegen, um Belege und Umsatzsteuervoranmeldungen gesetzeskonform zu archivieren</h2>
+      <h2>Der schnellste und einfachste Prozess, um Belege korrekt zu erfassen</h2>
+      <h2>Einmalig Steuerstammdaten eingeben</h2>
+      <h2>Umsatzsteuervoranmeldung ans Finanzamt versenden und Antwort archivieren</h2>
     
       </div>
     );
   
   }
 }
-components.OfficeOne2018=OfficeOne2018;
+components.ElsterInEinfachUndSchnell=ElsterInEinfachUndSchnell;
 
-export default OfficeOne2018;
+export default ElsterInEinfachUndSchnell;
