@@ -6,17 +6,24 @@ class OfficeLeaf extends Component {
   constructor(props) {
     super(props);
     this.size=props.size || "BUTTON";
-    this.handleClick = this.handleClick.bind(this);
-    this.initialize(props);
-  }
-  initialize(props){
     this.subject=props.subject || "Leaf";
     this.verb=props.verb || "shows";
     this.sentence=props.sentence || "OfficeLeaf is the base class for everything that can appear on any screen";
-    this.charactericon=this.subject[0]+this.verb[0];
-    if (props.path)this.path=props.path.split(",");else this.path=["OfficeLeaf","ObRoot"];
+    this.charactericon=props.charactericon || (this.subject[0]+this.verb[0]);
+
+    this.handleClick = this.handleClick.bind(this);
   }
   
+  initialize(newProps){
+    this.size=newProps.size || "BUTTON";
+    this.subject=newProps.subject || "Leaf";
+    this.verb=newProps.verb || "shows";
+    this.sentence=newProps.sentence || "OfficeLeaf is the base class for everything that can appear on any screen";
+    this.charactericon=newProps.charactericon || (this.subject[0]+this.verb[0]);
+
+    if (newProps.path)this.path=newProps.path.split(",");else this.path=["OfficeOneTeam","OfficeLeaf"];
+  }
+
   renderPath() {
     var CurrentLeaf;
     var pathHTML = [];
@@ -76,6 +83,7 @@ class OfficeLeaf extends Component {
   }
   render(){
     this.leafHTML="";
+    window.logger.debug("render:"+ this.constructor.name + " "+ this.size);
     switch (this.size) {
         case 'ICON':
             return this.renderIcon();
