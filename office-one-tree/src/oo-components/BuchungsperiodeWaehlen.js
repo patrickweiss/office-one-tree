@@ -3,24 +3,32 @@ import {OfficeLeaf,components} from './OfficeLeaf.js';
 
 
 class BuchungsperiodeWaehlen extends OfficeLeaf {
-  initialize(props) {
-    var newProps={};
+  constructor(props) {
+    super(props);
+    var newProps = {};
+    newProps.size = this.size;
+    newProps.charactericon = this.charactericon;
+
     newProps.subject= "Buchungsperiode";
     newProps.verb="wählen";
+    newProps.path="OfficeOneTeam,BuchungsperiodeWaehlen";
+ 
     if (window.store.getState().UI.buchungsperiode){
       newProps.subject=window.store.getState().UI.buchungsperiode.split(" ")[1];
       newProps.verb=" ";
+      newProps.charactericon=window.store.getState().UI.buchungsperiode.split(" ")[0];
     }
 
-    newProps.path="ObRoot,BuchungsperiodeWaehlen";
     super.initialize(newProps);
-    if (window.store.getState().UI.buchungsperiode){
-      this.charactericon=window.store.getState().UI.buchungsperiode.split(" ")[0];
-      this.subject=window.store.getState().UI.buchungsperiode;
-    }
   }
   
+   renderListItem(){
+     return this.renderMobile();
+   }
+
   renderMobile(){
+    window.logger.debug("2. BuchungsperiodeWaehlen.renderMobile--------------------------------------------");
+
     return (
         <table>
         <tbody>

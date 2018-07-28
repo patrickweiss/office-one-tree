@@ -36,7 +36,7 @@ window.logger.debug("hallo");
 
 var initial = {
 	UI: {
-		leaf: 'OfficeOneTeam',
+		leaf: 'EuropCarMobileFirst',
 		renderHelpOf: '',
 		counter:1,
 		loggedIn: false,
@@ -89,7 +89,7 @@ const reducer = (state = initial, action) => {
 			return newState;
 		case 'change_Buchungsperiode':
 			newState.UI.buchungsperiode=action.newBuchungsperiode;
-			newState.UI.leaf="ObRoot";
+			newState.UI.leaf="OfficeOneTeam";
 			return newState;
 		case 'update_signin_status':
 			newState.UI.loggedIn=action.isSignedIn;

@@ -63,10 +63,17 @@ class SelbstaendigMachen extends OfficeLeaf {
       <li>Melden sie sich mit Ihrem Google Account an.</li>
       <li>Nach der Anmeldung wird in ihrem Google Drive der Ordner "OfficeOneTeam" angelegt.</li>
       <li>In diesem Ordner gibt es den Ordner "Selbständig machen".</li>
-      <li>In diesem Ordner finden sie die Präsentation "Selbständig machen".</li>
-      <li>Die Präsentation erklärt in 6 einfachen Schritten, wie sie sich selbständig machen.</li>
+      <li>In diesem Ordner finden sie die Präsentationen:
+        <ol>
+          <li><a href="https://docs.google.com/presentation/d/1imJK_AwxCUhbeQLkAvMzr-Zc-uWIK3nGsr3aWjjc51U">finanziell unabhängig werden</a></li>
+          <li><a href="https://docs.google.com/presentation/d/10ew4uDwdBfVJa-HJFfIT7YbwnRH0IioV42vg9W-JTA0">selbständig machen</a></li>
+          <li><a href="https://docs.google.com/presentation/d/12nrp8ro5LIjIvLJWDh3Hy5fNMrN0DrAeH70SN5-hSU0">weiter entwickeln</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1yEldcig3nH3Bb82uEvwPQkYtBDvgk7XTBBWryLcdf7A">Verfahrensdokumentation</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1Na7C9v1rIXJgmbG3Jn2wLC_Ko2Yek6PtgwYiIC9iU1k">Schwarz auf Weiss AG</a></li>
+        </ol>
+      </li>
       </ul>
-      <div style={styleAnmelden}><button id="authorize-button" onClick={this.handleAnmelden}>Mit Google Account anmelden, und Präsentation in Google Drive kopieren</button></div>
+      <div style={styleAnmelden}><button id="authorize-button" onClick={this.handleAnmelden}>Mit Google Account anmelden, um Präsentationen in ihr Google Drive zu kopieren</button></div>
       <div style={styleAbmelden}><button id="signout-button" onClick={this.handleAbmelden}>Abmelden</button></div>
       
       </div>

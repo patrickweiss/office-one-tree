@@ -2,6 +2,7 @@ import React from 'react';
 import {OfficeLeaf,components} from './OfficeLeaf.js';
 import SelbstaendigMachen from './SelbstaendigMachen.js';
 import BenutzerAbmelden from './BenutzerAbmelden.js';
+import AusgabenBelegeErstellenErfassenBuchen from './AusgabenBelegeErstellenErfassenBuchen.js'; 
 
 
 
@@ -25,7 +26,8 @@ class OfficeOneTeam extends OfficeLeaf {
       <h1>OfficeOneTeam</h1>
       <p>Bürosoftware, Dienstleistungen und Anleitungen für Unternehmer</p>
       <ul>
-      <SelbstaendigMachen size="LIST_ITEM"/>    
+      <SelbstaendigMachen size="LIST_ITEM"/>   
+      <AusgabenBelegeErstellenErfassenBuchen size="LIST_ITEM"/>
       <li>Rechnungen schreiben</li>
       <li>Ausgaben erfassen</li>
       <li>Bankbuchungen zuordnen</li>
@@ -48,19 +50,19 @@ class OfficeOneTeam extends OfficeLeaf {
     <ul>
       <li>Alle Softwarefunktionen sind selbsterklärend.</li>
       <li>Alle Anleitungen sind ohne Vorkenntnisse nachvollziehbar.</li>
-      <li>Alle Fragen die auftauchen beantwortet das OfficeOne.Team kostenlos schriftlich , oder per Videokonferenz für 30 Euro pro Monat</li>
+      <li>Alle Fragen die auftauchen beantwortet das OfficeOne.Team kostenlos schriftlich, oder per Videokonferenz für 30 Euro pro Monat.</li>
     </ul>
     <h3>richtiger</h3>
     <ul>
       <li>... 3 Anwälte, 4 Meinungen ...</li>
-      <li>Als erfahrener Unternehmer, haben sie irgendwann gelernt, dass es in der echten Welt kein richtig oder falsch gibt</li>
-      <li>Unser Anspruch ist, dass die mit unserer Unterstützung erstellten Steuererklärungen deutlich "richtiger" sind, als die durchschnittliche, mit Hilfe eines Steuerberaters erstellte Steuererklärung</li>
-      <li>Die vom Finanzamt vorgegeben Richtlinien können Sie mit unserer Unterstützung deutlich besser einhalten, als mit jeder anderen Software, jedem anderen Prozess und jedem anderen Steuerberater</li>
+      <li>Als erfahrener Unternehmer, haben sie irgendwann gelernt, dass es in der echten Welt kein richtig oder falsch gibt.</li>
+      <li>Unser Anspruch ist, dass die mit unserer Unterstützung erstellten Steuererklärungen deutlich "richtiger" sind, als die durchschnittliche, mit Hilfe eines Steuerberaters erstellte Steuererklärung.</li>
+      <li>Die vom Finanzamt vorgegeben Richtlinien können Sie mit unserer Unterstützung deutlich besser einhalten, als mit jeder anderen Software, jedem anderen Prozess und jedem anderen Steuerberater.</li>
       <li>Durch die Nutzung unserer Software, Anleitungen und Beratung, erwerben Sie mehr Finanzkompetenz, als die meisten Unternehmer.</li>
     </ul>   
     <h3>flexibler</h3>
     <ul>
-      <li>Wir bieten die einzige Software die so flexibel ist, wie Excel und Word und gleichzeitig effizienter als jede andere Business-Software die wir kennen</li>
+      <li>Wir bieten die einzige Software die so flexibel ist, wie Excel und Word und gleichzeitig effizienter als jede andere Business-Software die wir kennen.</li>
     </ul>     
     <h3>sicherer</h3>
     <ul>
@@ -69,9 +71,9 @@ class OfficeOneTeam extends OfficeLeaf {
     </ul>
     <h3>entspannter</h3>
       <ul>
-        <li>Durch ihre Finanzkompetenz entwickeln Sie automatisch einen entspannten und souveränen Umgang mit dem Finanzamt</li>
+        <li>Durch ihre Finanzkompetenz entwickeln Sie automatisch einen entspannten und souveränen Umgang mit dem Finanzamt.</li>
         <li>Mit dem OfficeOne.Team sind sie nie alleine. Es gibt immer jemanden, der Ihr aktuelles Problem schon mal gehabt und gelöst hat.</li>
-        <li>Im Vergleich zu anderen Lösunge, sparen sie mit OfficeOne.Team viel Zeit und Geld. Machen Sie einfach zwei Wochen mehr Urlaub.</li>
+        <li>Im Vergleich zu anderen Lösungen, sparen sie mit OfficeOne.Team viel Zeit und Geld. Machen Sie einfach zwei Wochen mehr Urlaub.</li>
       </ul>
     </div>
     );

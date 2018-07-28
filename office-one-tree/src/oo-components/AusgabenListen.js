@@ -69,7 +69,7 @@ class AusgabenListen extends OfficeLeaf {
   
   
   componentDidMount() {
-    if (!window.store.getState().BM.ooAusgaben) {
+    if (!window.store.getState().BM.ooAusgaben&&window.store.getState().UI.loggedIn) {
       window.store.dispatch(
         serverAufrufen(
           {
